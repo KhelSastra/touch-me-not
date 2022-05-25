@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand&display=swap');
+
+@keyframes fadein {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    animation: fadein 0.25s linear;
+    background-color: #fef9ef;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #fef9ef;
+    margin: 0;
+    height: 10vh;
+}
+
+.navbar>* {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.hero {
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Fredoka One', cursive;
+    /*color: #ffd278;*/
+    font-size: 1.5em;
+}
+
+.content {
+    font-family: 'Fredoka One', cursive;
+    background-color: #ffd278;
+    flex-grow: 1;
+    padding: 1em;
+}
+
+#heatmap {
+    opacity: 0;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.switch {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    border-radius: 100%;
+    background-color: #ffd278;
+    box-shadow: 0 0 10px grey;
+    width: 3em;
+    height: 3em;
+    z-index: 3;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch:active {
+    box-shadow: 0 0 2px grey;
+}
+
+section {
+    font-size: larger;
+    line-height: 2em;
+    font-family: Menlo;
+    display: none;
+}
+
+button {
+    background-color: transparent;
+    font-family: 'Fredoka One';
+    color: #8a41a5;
+    border: none;
+    margin: 0.2rem;
+    cursor: pointer;
+    font-size: 1em;
+    border-bottom: 2px dashed #8a41a5;
+}
+
+button:hover {
+    border-bottom: 2px solid #8a41a5;
+}
+
+img {
+    user-select: none;
+}

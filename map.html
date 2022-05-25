@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="base.css">
+</head>
+
+<script>
+    let id = null;
+    function blink() {
+        let elem = document.getElementById("heatmap");
+        let opacity = 0;
+        clearInterval(id);
+        id = setInterval(frame, 20);
+        let turn = 0;
+        function frame() {
+            if (turn == 0) {
+                if (opacity >= 100) {
+                    turn = 1;
+                }
+                opacity += 10;
+            } else if (turn == 1) {
+                if (opacity == 0) {
+                    clearInterval(id);
+                    opacity = 0;
+                }
+                opacity -= 10;
+            }
+            elem.style.opacity = opacity + "%";
+        }
+
+        let shakeId = null;
+        let elem2 = document.getElementById("body");
+        elem2.style.animation = "shake 0.5s linear";
+        setTimeout(() => {
+            elem2.style.animation = "";
+        }, 500);
+    }
+
+    addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('area').forEach(elem => {
+            elem.onclick = blink;
+        })
+
+        document.querySelectorAll(".tab").forEach(button => {
+            button.onclick = event => {
+                const id = event.target.getAttribute('data-section')
+                document.querySelectorAll(`.tabdata:not(#${id})`).forEach(elem => elem.style.display = 'none')
+                document.getElementById(id).style.display = 'block';
+            }
+        })
+    });
+
+    function switchImage() {
+        const image = document.getElementById("main");
+        image.src = (image.src.split("/").pop() === "s3.png") ? "image1-4.png" : "s3.png";
+    }
+
+</script>
+
+<body>
+
+    <div class="navbar">
+        <p class="hero">
+            <a href="index.html" style="color: #8a41a5; text-decoration: none;">Khel Shastra</a>
+        </p>
+    </div>
+
+    <div style="display: flex; width: 100%; height: 90vh; " id="body">
+        <div class="switch" onclick="switchImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" style="height: 1.5em; width: 1.5em" viewBox="0 0 320 512">
+                <path id="switch-color" fill="#8a41a5"
+                    d="M223.1 64C223.1 99.35 195.3 128 159.1 128C124.7 128 95.1 99.35 95.1 64C95.1 28.65 124.7 0 159.1 0C195.3 0 223.1 28.65 223.1 64zM70.2 400C59.28 400 51.57 389.3 55.02 378.9L86.16 285.5L57.5 323.3C46.82 337.4 26.75 340.2 12.67 329.5C-1.415 318.8-4.175 298.7 6.503 284.7L65.4 206.1C87.84 177.4 122.9 160 160 160C197.2 160 232.2 177.4 254.6 206.1L313.5 284.7C324.2 298.7 321.4 318.8 307.3 329.5C293.3 340.2 273.2 337.4 262.5 323.3L233.9 285.6L264.1 378.9C268.4 389.3 260.7 400 249.8 400H232V480C232 497.7 217.7 512 200 512C182.3 512 168 497.7 168 480V400H152V480C152 497.7 137.7 512 120 512C102.3 512 88 497.7 88 480V400H70.2z" />
+            </svg>
+        </div>
+        <img src="image1-4.png" usemap="#image-map" id="main" style="height: 600px; align-self: center;">
+        <img src="image1-3.png" usemap="#image-map" id="heatmap"
+            style="height: 600px; align-self: center; position: absolute">
+        <div class="content" style="color: #8a41a5;">
+            <div style="display: flex;">
+                <button class="tab" data-section="section-1">Section 1</button>
+                <button class="tab" data-section="section-2">Section 2</button>
+            </div>
+            <h1>Touch Me Not</h1>
+            <section class="tabdata" id="section-1" style="display: block">
+                <p> an educational aid to teach kids what bad touch is and to mimic appropriate reactions. <br /> It can
+                    also be used as a tool for non-verbal victims of assault.</p>
+            </section>
+        </div>
+
+        <map name="image-map">
+            <area target="" alt="" title="" href="#"
+                coords="237,227,233,204,271,193,293,208,353,215,348,285,259,275,261,255,261,227,250,226" shape="poly">
+            <area target="" alt="" title="" href="#" coords="366,208,354,226,378,245,378,221" shape="poly">
+            <area target="" alt="" title="" href="#" coords="285,300,314,297,329,329,309,353,274,351,267,326"
+                shape="poly">
+            <area target="" alt="" title="" href="#" coords="248,273,263,310,244,337,234,316,246,294" shape="poly">
+            <area target="" alt="" title="" href="#" coords="243,398,235,389,281,357,304,361,280,435,289,373"
+                shape="poly">
+            <area target="" alt="" title="" href="#" coords="359,313,334,349,356,385" shape="poly">
+            <area target="" alt="" title="" href="#" coords="256,488,257,457,278,464" shape="poly">
+        </map>
+</body>
+
+</html>
