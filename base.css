@@ -97,7 +97,7 @@ body {
 section {
     font-size: larger;
     line-height: 2em;
-    font-family: Menlo;
+    font-family: monospace;
     display: none;
 }
 
