@@ -49,6 +49,13 @@ body {
     opacity: 0;
 }
 
+a,
+a:visited,
+a:link,
+a:active {
+    color: inherit;
+}
+
 @keyframes shake {
 
     10%,
@@ -129,8 +136,11 @@ img {
         flex-direction: column;
     }
 
+    img {
+        display: none;
+    }
+
     .switch {
-        bottom: 6em;
-        left: 25em;
+        display: none;
     }
 }
