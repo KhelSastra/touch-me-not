@@ -122,4 +122,16 @@ button:hover {
 
 img {
     user-select: none;
+    max-width: 100%;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    body>div:nth-child(2) {
+        flex-direction: column;
+    }
+
+    .switch {
+        bottom: 6em;
+        left: 25em;
+    }
 }
